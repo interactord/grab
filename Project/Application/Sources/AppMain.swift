@@ -10,7 +10,7 @@ struct AppMain: App {
     WindowGroup {
       LinkNavigationView(
         linkNavigator: appContainer.linkNavigator,
-        item: .init(path: "", items: .none))
+        item: .init(path: "home", items: .none))
       .ignoresSafeArea()
     }
   }

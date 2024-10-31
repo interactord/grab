@@ -3,19 +3,19 @@ import LinkNavigator
 import Domain
 import Architecture
 
-struct HomeSideEffect {
+struct LoginSideEffect {
   let useCaseGroup: DashboardSideEffect
   let navigator: RootNavigatorType
 }
 
-extension HomeSideEffect {
+extension LoginSideEffect {
   var fire: () async throws -> TestEntity {
     useCaseGroup.testUseCase.fire
   }
 
-  var routeToNext: () -> Void {
+  var routeToBack: () -> Void {
     {
-      navigator.next(linkItem: .init(path: "login", items: .none), isAnimated: true)
+      navigator.back(isAnimated: true)
     }
   }
 }

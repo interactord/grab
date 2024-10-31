@@ -2,8 +2,9 @@ import Foundation
 import LinkNavigator
 import Domain
 import Platform
+import Dashboard
 
-struct AppSideEffect: DependencyType {
+struct AppSideEffect: DependencyType, DashboardSideEffect {
   let testUseCase: TestUseCase
 }
 

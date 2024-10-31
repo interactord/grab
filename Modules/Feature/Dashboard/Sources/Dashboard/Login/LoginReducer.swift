@@ -3,9 +3,9 @@ import ComposableArchitecture
 import Foundation
 
 @Reducer
-struct HomeReducer {
+struct LoginReducer {
 
-  let sideEffect: HomeSideEffect
+  let sideEffect: LoginSideEffect
 
   public var body: some ReducerOf<Self> {
     BindingReducer()
@@ -18,8 +18,8 @@ struct HomeReducer {
           CancelID.allCases.map{ .cancel(pageID: state.id, id: $0) }
         )
 
-      case .onTapNext:
-        sideEffect.routeToNext()
+      case .onTapBack:
+        sideEffect.routeToBack()
         return .none
 
       case .throwError(let error):
@@ -30,7 +30,7 @@ struct HomeReducer {
   }
 }
 
-extension HomeReducer {
+extension LoginReducer {
   @ObservableState
   struct State: Equatable, Identifiable, Sendable {
     let id: UUID
@@ -44,13 +44,13 @@ extension HomeReducer {
     case binding(BindingAction<State>)
     case teardown
 
-    case onTapNext
+    case onTapBack
 
     case throwError(String)
   }
 }
 
-extension HomeReducer {
+extension LoginReducer {
   enum CancelID: Equatable, CaseIterable {
     case teardown
   }
